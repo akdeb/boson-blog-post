@@ -96,6 +96,8 @@ export default function Page() {
 
         <p>For a deployment, the practical checks are response time and continuous playback on the networks and in the regions where people will use the device.</p>
 
+        <figure className="photo"><Image src="/images/akash-story.jpg" alt="Elato founder Akash Deb holds a teddy bear fitted with an Elato device and listens to a choose-your-adventure story" width={1800} height={838} /><figcaption>Elato founder Akash Deb listens to a choose-your-adventure story on an ESP32 gadget</figcaption></figure>
+
         <h4>See it in action</h4>
 
         <figure className="short">
