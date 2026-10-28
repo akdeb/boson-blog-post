@@ -6,7 +6,7 @@ const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"], varia
 const manrope = Manrope({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-manrope" });
 const saira = Saira({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-saira" });
 
-const title = "Running Higgs Realtime on ESP32";
+const title = "Build a $10 Conversational Device with Higgs Realtime and ESP32";
 const description =
   "Build ESP32 voice devices powered by Higgs Realtime using Elato’s open-source stack. Explore the hardware, audio streaming and global edge deployment.";
 const image = { url: "/opengraph-image.jpg", width: 1774, height: 887, alt: "Illustrated voice assistants in a factory, a kitchen and a child's room" };

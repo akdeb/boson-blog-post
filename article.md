@@ -1,18 +1,18 @@
-# Running Higgs Realtime on ESP32
+# Build a $10 Conversational Device with Higgs Realtime and ESP32
 
 The Boson AI Team
 
 October 27, 2026
 
-Developers can now build ESP32 voice devices powered by Higgs Realtime using [Elato’s open-source stack](https://github.com/akdeb/ElatoAI). With a roughly $10 ESP32-S3 board, a microphone and a speaker, the setup brings live speech-to-speech conversation to low-cost, low-power hardware, without external PSRAM.
+Developers can now build low-cost conversational devices powered by Higgs Realtime using [Elato’s open-source stack](https://github.com/akdeb/ElatoAI). With an approximately $10 ESP32-S3 board, a microphone and a speaker, the reference implementation brings live, interruptible speech-to-speech interaction to low-power hardware without requiring external PSRAM.
 
-A kitchen assistant that talks you through a recipe, an equipment interface you can use hands-free, or an educational gadget with choose-your-adventure stories all need the same foundation: a device that can listen, send speech to the model and play the reply. This implementation provides that foundation with Arduino firmware, secure WebSockets and a Deno edge relay.
+A kitchen assistant can guide someone through a recipe and adapt when they ask a question. An equipment interface can provide hands-free instructions while the operator is working. An educational toy can become a character that listens, responds and changes the story in real time. Higgs Realtime provides the conversational intelligence, while the ESP32 captures and streams audio and plays each response as it is generated.
 
 ![Voice assistants in a factory, a kitchen and a child’s room](public/images/hero.jpg)
 
-## A speech-to-speech model for physical devices
+## Why Higgs Realtime
 
-[Higgs Realtime](https://docs.boson.ai/overview) accepts live audio and streams spoken responses within a persistent, two-way session. Turn detection, interruption handling and tool use are part of the API, so developers can build conversational behavior around an ongoing session.
+Most connected voice devices still behave like walkie-talkies: listen, stop, process and then play a completed answer. Higgs Realtime is designed for continuous interaction. It streams responses as they are generated, detects when the user speaks again, recovers cleanly from interruption and can call tools to take action in the surrounding application. This allows even a low-cost device to support a conversation that feels responsive, adaptive and connected to real workflows.
 
 The model runs in the cloud. On the device, the work is limited to audio capture, networking, decoding and playback. This keeps the processing and memory requirements small enough for an ESP32-S3 and lets developers configure the voice and instructions on the server.
 
@@ -144,9 +144,7 @@ A session can end through a device command or through the model’s `end_call` t
 
 Stable speech on a microcontroller depends on the whole audio path. Opus keeps returning audio compact, and continuous streaming lets the board play chunks as they arrive. The Deno relay can be deployed on globally distributed edge infrastructure to serve devices in different regions.
 
-[Elato’s published results](https://github.com/akdeb/ElatoAI#-important-stats) report roughly two to three seconds of round-trip latency globally, with tests of up to 17 minutes of uninterrupted conversation. These are results for the broader stack, rather than a dedicated Higgs Realtime benchmark. Wi-Fi quality, deployment region and model response time affect latency; establishing the first connection adds delay, and the edge host’s runtime limit caps session length.
-
-For a deployment, the practical checks are response time and continuous playback on the networks and in the regions where people will use the device.
+[Elato reports](https://github.com/akdeb/ElatoAI#-important-stats) approximately two to three seconds of end-to-end response time across its global reference stack. This is not a measurement of Higgs Realtime model latency alone. It includes the ESP32’s Wi-Fi connection, audio transport, the Deno relay, geographic network distance, model processing, Opus encoding and device playback. Higgs Realtime itself is designed for approximately 700 ms speech-in to speech-out response under reference conditions. Production teams should measure the complete device experience in their target regions and networks.
 
 ## See it in action
 
